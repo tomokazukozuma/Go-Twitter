@@ -11,7 +11,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/pkg/errors"
 	"github.com/olekukonko/tablewriter"
-
 )
 
 type Tweet struct {
@@ -26,7 +25,7 @@ type Tweet struct {
 
 func main() {
 
-	isLatest := flag.Bool("l", false, "retreive latest tweet")
+	isLatest := flag.Bool("latest", false, "retreive latest tweet")
 	flag.Parse()
 	args := flag.Args()
 
@@ -37,7 +36,7 @@ func main() {
 	if word == "" {
 		log.Fatal(errors.New("Search word is empty!!"))
 	}
-	url := fmt.Sprintf("https://twitter.com/search?q=%s", word)
+	url := fmt.Sprintf("https://twitter.com/search?lang=ja&q=%s" + "", word)
 	if *isLatest {
 		url += "&f=tweets"
 	}
